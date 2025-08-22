@@ -1,7 +1,7 @@
 {
   "name": "shared",
   "version": "1.0.0",
-  "description": "Share'D file sharing application",
+  "description": "Share'D file sharing application - Updated for Vercel deployment",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
