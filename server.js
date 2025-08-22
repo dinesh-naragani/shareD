@@ -95,6 +95,11 @@ function calculateExpirationTime(expiresIn) {
 
 // API Endpoints
 
+// GET /api/health - Health check for Render.com
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK', message: 'Share\'D Backend is running' });
+});
+
 // POST /api/upload - Handle file uploads
 app.post('/api/upload', upload.array('files'), (req, res) => {
   try {
