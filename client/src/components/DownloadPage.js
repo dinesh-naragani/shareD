@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_ENDPOINTS } from '../config/api';
-import { Download, File, ArrowLeft, Search, AlertCircle, CheckCircle } from 'lucide-react';
+import { Download, File, ArrowLeft, Search, AlertCircle } from 'lucide-react';
 
 const DownloadPage = () => {
   const { code } = useParams();

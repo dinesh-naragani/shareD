@@ -5,7 +5,7 @@ import { Copy, Check, Share2, ArrowLeft, Download, AlertCircle } from 'lucide-re
 
 const SharePage = ({ uploadData: propUploadData }) => {
   const navigate = useNavigate();
-  const [uploadData, setUploadData] = useState(propUploadData || null);
+  const [uploadData] = useState(propUploadData || null);
   const [copied, setCopied] = useState(false);
   const [showRedirect, setShowRedirect] = useState(false);
 
