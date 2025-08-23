@@ -37,8 +37,8 @@ const storage = multer.diskStorage({
 const upload = multer({ 
   storage: storage,
   limits: {
-    fileSize: 100 * 1024 * 1024, // 100MB per file
-    files: 10, // Maximum 10 files per upload
+    fileSize: 200 * 1024 * 1024, // 200MB per file
+    files: 15, // Maximum 15 files per upload
     fieldSize: 2 * 1024 * 1024 // 2MB for other fields
   },
   fileFilter: (req, file, cb) => {
@@ -66,8 +66,8 @@ const upload = multer({
   }
 });
 
-// Global storage limit (1GB total)
-const MAX_STORAGE_BYTES = 1024 * 1024 * 1024; // 1GB
+// Global storage limit (2GB total)
+const MAX_STORAGE_BYTES = 2 * 1024 * 1024 * 1024; // 2GB
 let currentStorageBytes = 0;
 
 // Helper function to generate random 4-digit numeric code
@@ -123,11 +123,11 @@ app.post('/api/upload', upload.array('files'), (req, res) => {
         }
       });
       
-      return res.status(413).json({ 
-        error: 'Storage limit exceeded. Total storage limit is 1GB.',
-        currentUsage: formatBytes(currentStorageBytes),
-        limit: '1GB'
-      });
+              return res.status(413).json({ 
+          error: 'Storage limit exceeded. Total storage limit is 2GB.',
+          currentUsage: formatBytes(currentStorageBytes),
+          limit: '2GB'
+        });
     }
 
     // Fixed 5-minute expiration
@@ -163,7 +163,7 @@ app.post('/api/upload', upload.array('files'), (req, res) => {
       expiresIn: '5 minutes',
       storageInfo: {
         used: formatBytes(currentStorageBytes),
-        limit: '1GB',
+        limit: '2GB',
         remaining: formatBytes(MAX_STORAGE_BYTES - currentStorageBytes)
       }
     });
@@ -186,10 +186,10 @@ app.post('/api/upload', upload.array('files'), (req, res) => {
     
     if (error.message === 'File type not allowed') {
       res.status(400).json({ error: 'One or more file types are not allowed' });
-    } else if (error.code === 'LIMIT_FILE_SIZE') {
-      res.status(413).json({ error: 'File too large. Maximum file size is 100MB' });
-    } else if (error.code === 'LIMIT_FILE_COUNT') {
-      res.status(413).json({ error: 'Too many files. Maximum 10 files per upload' });
+    } else       if (error.code === 'LIMIT_FILE_SIZE') {
+        res.status(413).json({ error: 'File too large. Maximum file size is 200MB' });
+      } else if (error.code === 'LIMIT_FILE_COUNT') {
+        res.status(413).json({ error: 'Too many files. Maximum 15 files per upload' });
     } else {
       res.status(500).json({ error: 'Internal server error' });
     }
@@ -236,7 +236,7 @@ app.get('/api/download/:code', (req, res) => {
   });
 
   // Set response headers
-  res.attachment('sharedrop-files.zip');
+  res.attachment('shareD-files.zip');
   res.setHeader('Content-Type', 'application/zip');
 
   // Pipe archive to response
@@ -343,7 +343,7 @@ app.get('/api/download/:code/file/:index', (req, res) => {
 app.get('/api/storage', (req, res) => {
   res.json({
     currentUsage: formatBytes(currentStorageBytes),
-    limit: '1GB',
+    limit: '2GB',
     remaining: formatBytes(MAX_STORAGE_BYTES - currentStorageBytes),
     usagePercentage: Math.round((currentStorageBytes / MAX_STORAGE_BYTES) * 100),
     activeCodes: Object.keys(fileStore).length
@@ -383,12 +383,12 @@ cron.schedule('*/5 * * * *', () => {
     }
   });
   
-  console.log(`Current storage usage: ${formatBytes(currentStorageBytes)} / 1GB`);
+  console.log(`Current storage usage: ${formatBytes(currentStorageBytes)} / 2GB`);
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`ShareDrop server running on port ${PORT}`);
+  console.log(`Share'D server running on port ${PORT}`);
   console.log(`Uploads directory: ${uploadsDir}`);
 });
 

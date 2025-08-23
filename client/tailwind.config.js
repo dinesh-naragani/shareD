@@ -22,6 +22,23 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         }
+      },
+      screens: {
+        'xs': '475px',
+        '3xl': '1600px',
+        '4xl': '2000px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      minHeight: {
+        '44': '11rem',
+        '64': '16rem',
+      },
+      minWidth: {
+        '44': '11rem',
       }
     },
   },

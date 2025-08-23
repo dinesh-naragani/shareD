@@ -1,4 +1,4 @@
-# ShareDrop
+# Share'D
 
 A simple, fast file-sharing web application that allows users to upload files, generate a temporary 4-digit share code, and enable unlimited downloads until the files expire.
 
@@ -34,7 +34,7 @@ A simple, fast file-sharing web application that allows users to upload files, g
 1. **Clone the repository**
    ```bash
    git clone <your-repo-url>
-   cd send_anywhere
+       cd shareD
    ```
 
 2. **Install backend dependencies**
@@ -67,7 +67,7 @@ A simple, fast file-sharing web application that allows users to upload files, g
 ## 📁 Project Structure
 
 ```
-send_anywhere/
+shareD/
 ├── server.js              # Backend server
 ├── package.json           # Backend dependencies
 ├── uploads/               # File storage directory
@@ -99,9 +99,9 @@ send_anywhere/
 
 ## 🔒 Security & Limits
 
-- **File Size**: Maximum 100MB per file
-- **File Count**: Maximum 10 files per upload
-- **Total Storage**: Maximum 1GB total storage
+- **File Size**: Maximum 200MB per file
+- **File Count**: Maximum 15 files per upload
+- **Total Storage**: Maximum 2GB total storage
 - **Expiration**: Files expire after 5 minutes
 - **File Types**: All file types supported
 
