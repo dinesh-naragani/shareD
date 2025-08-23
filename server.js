@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://shared.dineshn.xyz',
+    'https://sd.dineshn.xyz',
     'https://dineshn.xyz'
   ],
   credentials: true
